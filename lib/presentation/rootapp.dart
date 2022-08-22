@@ -1,5 +1,7 @@
 import 'package:elearn/presentation/themes/colors.dart';
+import 'package:elearn/utils/subjects_util.dart';
 import 'package:flutter/material.dart';
+import 'package:elearn/data/user/user_data.dart';
 // import 'package:flutter_icons/flutter_icons.dart' show Feather;
 
 class RootApp extends StatefulWidget {
@@ -32,10 +34,12 @@ class _RootAppState extends State<RootApp> {
 // Custom appbar
   PreferredSizeWidget getAppBar() {
     double _h =
-        activeTab == 0 ? 300 : 220; // grow the app bar to fit subject list
+        activeTab == 0 ? 315 : 220; // grow the app bar to fit subject list
     return PreferredSize(
       preferredSize: Size.fromHeight(_h),
       child: Container(
+        // duration: const Duration(milliseconds: 500),
+        // curve: Curves.fastOutSlowIn,
         // Appbar container
         height: _h,
         width: MediaQuery.of(context).size.width,
@@ -43,23 +47,22 @@ class _RootAppState extends State<RootApp> {
           padding: const EdgeInsets.only(
             left: 12,
             right: 12,
-            top: 70,
+            top: 50,
           ),
           child: Column(
             // Colums conataining the username, profilepic, and the searchbar
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
                 // user name and searchbar
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Hi, Akshay!',
-                      style: TextStyle(
+                children: [
+                  Text('Hi, ' + user[0]['firstname'],
+                      style: const TextStyle(
                           color: black,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                  SizedBox(
+                  const SizedBox(
                     child: CircleAvatar(
                       radius: 25.0,
                       backgroundColor: disabled,
@@ -97,15 +100,13 @@ class _RootAppState extends State<RootApp> {
                     BoxShadow(
                       color: shadow,
                       blurRadius: 8,
-                      offset: Offset(0, 10),
+                      offset: Offset(0, 1),
                     ),
                   ],
                 ),
               ),
-              // temp Sized box
-              const SizedBox(
-                height: 10,
-              ),
+              // subjects for home
+              activeTab == 0 ? const ExploreSubjects() : const SizedBox(),
             ],
           ),
         ),

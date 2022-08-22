@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // subject list
 const List subjects = [
+  {"title": "All", "img": "#"},
   {"title": "Physics", "img": "#"},
   {"title": "Maths", "img": "#"},
   {"title": "Chemistry", "img": "#"},
