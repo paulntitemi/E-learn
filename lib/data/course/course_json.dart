@@ -10,16 +10,25 @@ const List subjects = [
 ];
 
 // explore category list
-const List exploreCategory = ["Revision Lectures", "Recommended Lectures"];
+const List exploreCategory = [
+  {"title": "Revision Lectures"},
+  {"title": "Recommended Lectures"},
+  {"title": "Revision Lectures"},
+  {"title": "Recommended Lectures"},
+  {"title": "Revision Lectures"},
+  {"title": "Recommended Lectures"},
+  {"title": "Revision Lectures"},
+  {"title": "Recommended Lectures"},
+];
 
 // video category list
 const List videoCategory = [
-  "Best of Physics",
-  "best of Chemistry",
-  "Best of Mathematics",
-  "Best of Biology",
-  "Best of Geography",
-  "Best of Language Arts"
+  {"title": "Best of Physics"},
+  {"title": "best of Chemistry"},
+  {"title": "Best of Mathematics"},
+  {"title": "Best of Biology"},
+  {"title": "Best of Geography"},
+  {"title": "Best of Language Arts"},
 ];
 
 // course list data model
@@ -27,7 +36,92 @@ const List courses = [
   {
     "img": "#",
     "title": "#",
-    "short_description": "#",
+    "short_description": "Hello",
+    "lond_description": "#",
+    "duration": "#",
+    "video_url": "#",
+    "topics": [
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+    ]
+  },
+  {
+    "img": "#",
+    "title": "#",
+    "short_description": "Hello",
+    "lond_description": "#",
+    "duration": "#",
+    "video_url": "#",
+    "topics": [
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+    ]
+  },
+  {
+    "img": "#",
+    "title": "#",
+    "short_description": "Hello",
+    "lond_description": "#",
+    "duration": "#",
+    "video_url": "#",
+    "topics": [
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+    ]
+  },
+  {
+    "img": "#",
+    "title": "#",
+    "short_description": "Hello",
+    "lond_description": "#",
+    "duration": "#",
+    "video_url": "#",
+    "topics": [
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+    ]
+  },
+  {
+    "img": "#",
+    "title": "#",
+    "short_description": "Hello",
+    "lond_description": "#",
+    "duration": "#",
+    "video_url": "#",
+    "topics": [
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+      {"title": "#", "duration": "#"},
+    ]
+  },
+  {
+    "img": "#",
+    "title": "#",
+    "short_description": "Hello",
     "lond_description": "#",
     "duration": "#",
     "video_url": "#",
