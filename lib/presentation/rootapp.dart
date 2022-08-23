@@ -1,5 +1,6 @@
+import 'package:elearn/presentation/pages/explore.dart';
 import 'package:elearn/presentation/themes/colors.dart';
-import 'package:elearn/utils/subjects_util.dart';
+import 'package:elearn/presentation/widget/subjects_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:elearn/data/user/user_data.dart';
 // import 'package:flutter_icons/flutter_icons.dart' show Feather;
@@ -16,6 +17,7 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: background,
       appBar: getAppBar(),
       body: getBody(),
       bottomNavigationBar: getFooter(),
@@ -31,7 +33,7 @@ class _RootAppState extends State<RootApp> {
     );
   }
 
-// Custom appbar
+// Custom appbar (might use sliverappbar for scrolling effects)
   PreferredSizeWidget getAppBar() {
     double _h =
         activeTab == 0 ? 315 : 220; // grow the app bar to fit subject list
@@ -136,13 +138,14 @@ class _RootAppState extends State<RootApp> {
       index: activeTab,
       children: const [
         //0
-        Center(
-          child: Text(
-            "Explore",
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ),
+        ExplorePage(),
+        // Center(
+        //   child: Text(
+        //     "Explore",
+        //     style: TextStyle(
+        //         fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+        //   ),
+        // ),
         //1
         Center(
           child: Text(
