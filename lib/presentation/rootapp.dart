@@ -1,4 +1,6 @@
 import 'package:elearn/presentation/pages/explore.dart';
+import 'package:elearn/presentation/pages/planner.dart';
+import 'package:elearn/presentation/pages/videos.dart';
 import 'package:elearn/presentation/themes/colors.dart';
 import 'package:elearn/presentation/widget/subjects_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,7 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true, // for notch
       backgroundColor: background,
       appBar: getAppBar(),
       body: getBody(),
@@ -134,43 +137,54 @@ class _RootAppState extends State<RootApp> {
 
 //the body/presentation/pages widget
   Widget getBody() {
-    return IndexedStack(
-      index: activeTab,
-      children: const [
-        //0
-        ExplorePage(),
-        // Center(
-        //   child: Text(
-        //     "Explore",
-        //     style: TextStyle(
-        //         fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-        //   ),
-        // ),
-        //1
-        Center(
-          child: Text(
-            "Planner",
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+    return SafeArea(
+      bottom: false,
+      child: IndexedStack(
+        index: activeTab,
+        children: const [
+          //0
+          ExplorePage(),
+          // Center(
+          //   child: Text(
+          //     "Explore",
+          //     style: TextStyle(
+          //         fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+          //   ),
+          // ),
+          //1
+          PlannerPage(),
+          // Center(
+          //   child: Text(
+          //     "Planner",
+          //     style: TextStyle(
+          //         fontSize: 20,
+          //         color: Colors.black,
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          // ),
+          //2
+          VideosPage(),
+          // Center(
+          //   child: Text(
+          //     "Videos",
+          //     style: TextStyle(
+          //         fontSize: 20,
+          //         color: Colors.black,
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          // ),
+          //3
+          Center(
+            child: Text(
+              "LeaderBoard",
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        //2
-        Center(
-          child: Text(
-            "Videos",
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ),
-        //3
-        Center(
-          child: Text(
-            "LeaderBoard",
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
