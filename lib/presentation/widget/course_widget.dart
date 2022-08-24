@@ -7,10 +7,14 @@ class CourseView extends StatefulWidget {
   // final String title;
   // final String image;
   final String desc;
+  final double widthvalue;
+  final double heightvalue;
   const CourseView({
     Key? key,
     // required this.title,
     // required this.image,
+    required this.widthvalue,
+    required this.heightvalue,
     required this.desc,
   }) : super(key: key);
 
@@ -26,8 +30,8 @@ class _CourseViewState extends State<CourseView> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           clipBehavior: Clip.antiAlias,
-          height: 200,
-          width: 150,
+          height: widget.heightvalue,
+          width: widget.widthvalue,
           child: Column(
             children: [
               // image
@@ -43,7 +47,7 @@ class _CourseViewState extends State<CourseView> {
               ),
               // short_description
               SizedBox(
-                height: 80,
+                height: 60,
                 child: Text(widget.desc),
               ),
               // watch lecture button
