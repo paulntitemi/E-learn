@@ -1,4 +1,5 @@
 import 'package:elearn/presentation/pages/explore.dart';
+import 'package:elearn/presentation/pages/leaderboard.dart';
 import 'package:elearn/presentation/pages/planner.dart';
 import 'package:elearn/presentation/pages/videos.dart';
 import 'package:elearn/presentation/themes/colors.dart';
@@ -19,7 +20,7 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true, // for notch
+      // extendBody: true, // for notch, but makes some elements invisible
       backgroundColor: background,
       appBar: getAppBar(),
       body: getBody(),
@@ -38,8 +39,15 @@ class _RootAppState extends State<RootApp> {
 
 // Custom appbar (might use sliverappbar for scrolling effects)
   PreferredSizeWidget getAppBar() {
-    double _h =
-        activeTab == 0 ? 315 : 220; // grow the app bar to fit subject list
+    double _h = 220;
+    int leaderboardTabindex = 0;
+    if (activeTab == 0) {
+      _h = 315;
+    } else if (activeTab == 3) {
+      _h = 280;
+    } else {
+      _h = 220;
+    } // grow the app bar to fit subject list
     return PreferredSize(
       preferredSize: Size.fromHeight(_h),
       child: Container(
@@ -112,6 +120,8 @@ class _RootAppState extends State<RootApp> {
               ),
               // subjects for home
               activeTab == 0 ? const ExploreSubjects() : const SizedBox(),
+              // tab for leaderboard
+              activeTab == 3 ? const LeaderBoardTab() : const SizedBox(),
             ],
           ),
         ),
@@ -144,45 +154,12 @@ class _RootAppState extends State<RootApp> {
         children: const [
           //0
           ExplorePage(),
-          // Center(
-          //   child: Text(
-          //     "Explore",
-          //     style: TextStyle(
-          //         fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-          //   ),
-          // ),
           //1
           PlannerPage(),
-          // Center(
-          //   child: Text(
-          //     "Planner",
-          //     style: TextStyle(
-          //         fontSize: 20,
-          //         color: Colors.black,
-          //         fontWeight: FontWeight.bold),
-          //   ),
-          // ),
           //2
           VideosPage(),
-          // Center(
-          //   child: Text(
-          //     "Videos",
-          //     style: TextStyle(
-          //         fontSize: 20,
-          //         color: Colors.black,
-          //         fontWeight: FontWeight.bold),
-          //   ),
-          // ),
           //3
-          Center(
-            child: Text(
-              "LeaderBoard",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
+          LeaderBoardPage(),
         ],
       ),
     );
