@@ -44,7 +44,7 @@ class _RootAppState extends State<RootApp> {
     if (activeTab == 0) {
       _h = 315;
     } else if (activeTab == 3) {
-      _h = 280;
+      _h = 270;
     } else {
       _h = 220;
     } // grow the app bar to fit subject list
@@ -119,7 +119,7 @@ class _RootAppState extends State<RootApp> {
                 ),
               ),
               // subjects for home
-              activeTab == 0 ? const ExploreSubjects() : const SizedBox(),
+              activeTab == 0 ? const ExploreSubjects() : Container(),
               // tab for leaderboard
               activeTab == 3 ? const LeaderBoardTab() : const SizedBox(),
             ],
