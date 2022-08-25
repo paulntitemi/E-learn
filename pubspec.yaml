@@ -35,7 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_icons: ^1.1.0 # for feather icons
-  native_video_view: ^1.0.5 # for local video player
+  video_player: ^2.4.7 # for local video player
   table_calendar: ^3.0.6 # for the calendar
 
 dev_dependencies:
