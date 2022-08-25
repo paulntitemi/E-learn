@@ -1,3 +1,4 @@
+import 'package:elearn/data/course/leaderboard.dart';
 import 'package:flutter/material.dart';
 import 'package:elearn/data/course/course_json.dart';
 import 'package:elearn/presentation/themes/colors.dart';
@@ -92,40 +93,49 @@ class LeaderBoardTab extends StatefulWidget {
 }
 
 class _LeaderBoardTabState extends State<LeaderBoardTab> {
+  int activeIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    int activeIndex = 0;
     return Padding(
-        padding: const EdgeInsets.only(left: 5, top: 10),
-        child: SizedBox(
-          height: 60,
-          width: MediaQuery.of(context).size.width,
-          // color: gold,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // for local tab
-              GestureDetector(
+        padding: const EdgeInsets.only(
+          left: 5,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: List.generate(leaderTabNames.length, (index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 2),
+              child: // for local tab
+                  GestureDetector(
                 onTap: () {
                   setState(() {
-                    activeIndex = 0;
+                    activeIndex = index;
                   });
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Center(
-                      child: Text(
-                        "Local",
-                        style: TextStyle(
-                          color: black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                    // the text
+                    Container(
+                      height: 50,
+                      width: 60,
+                      child: Center(
+                        child: Text(
+                          leaderTabNames[index]["title"],
+                          style: TextStyle(
+                            color: activeIndex == index ? primary : disabled,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
+                      decoration: BoxDecoration(
+                          color: white, borderRadius: BorderRadius.circular(5)),
                     ),
-                    activeIndex == 0
+                    // the indicator
+                    activeIndex == index
                         ? Container(
                             // the indicator
                             width: 40,
@@ -138,45 +148,8 @@ class _LeaderBoardTabState extends State<LeaderBoardTab> {
                   ],
                 ),
               ),
-              // little space
-              const SizedBox(
-                width: 10,
-              ),
-              // for global tab
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    activeIndex = 1;
-                  });
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Center(
-                      child: Text(
-                        "Global",
-                        style: TextStyle(
-                          color: black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    activeIndex == 1
-                        ? Container(
-                            // the indicator
-                            width: 40,
-                            height: 3,
-                            decoration: BoxDecoration(
-                                color: primary,
-                                borderRadius: BorderRadius.circular(5)),
-                          )
-                        : Container()
-                  ],
-                ),
-              ),
-            ],
-          ),
+            );
+          }),
         ));
   }
 }
