@@ -32,7 +32,7 @@ const List plannerCategory = [
 
 // leaderboard category
 const List leaderboardCategory = [
-  {"title": "Facebook Leaderboard", "keyword": "facebook"},
-  {"title": "Twitter Leaderboard", "keyword": "twitter"},
-  {"title": "Instagram Leaderboard", "keyword": "instagram"},
+  {"title": "Facebook Leaderboard"},
+  {"title": "Twitter Leaderboard"},
+  {"title": "Instagram Leaderboard"},
 ];
