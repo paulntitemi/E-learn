@@ -7,3 +7,6 @@ const Color background = Color(0xB3FFFFFF);
 const Color white = Color(0xFFFFFFFF);
 const Color disabled = Color(0xFF5f5f5f);
 // const Color background = Color(0x62FFFFF);
+const Color gold = Color(0xFFFFCA28);
+const Color silver = Color(0xFFBDBDBD);
+const Color bronze = Color(0xFFF57F17);
