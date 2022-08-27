@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_icons: ^1.1.0 # for feather icons
   video_player: ^2.4.7 # for local video player
+  flick_video_player: ^0.5.0 # for video player design and controls
   table_calendar: ^3.0.6 # for the calendar
 
 dev_dependencies:
