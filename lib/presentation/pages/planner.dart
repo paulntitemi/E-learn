@@ -1,6 +1,7 @@
 import 'package:elearn/data/course/categories.dart';
 import 'package:elearn/presentation/themes/colors.dart';
 import 'package:elearn/presentation/widget/course_widget.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
 class PlannerPage extends StatefulWidget {
@@ -78,7 +79,7 @@ class _PlannerPageState extends State<PlannerPage> {
             ),
             // category 2 name
             Padding(
-              padding: const EdgeInsets.only(left: 25, bottom: 5, top: 2),
+              padding: const EdgeInsets.only(left: 25, bottom: 10, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -114,6 +115,40 @@ class _PlannerPageState extends State<PlannerPage> {
                     color: primary,
                   ),
                 ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  // calendar
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TableCalendar(
+                        firstDay: DateTime.utc(2010, 10, 16),
+                        lastDay: DateTime.utc(2030, 3, 14),
+                        focusedDay: DateTime.now(),
+                        // calendar options
+                        headerVisible: false,
+                        shouldFillViewport: false,
+                      ),
+                    ),
+                  ),
+                  // event container
+                  //TODO: create events data and display it in the calander
+                  Container(
+                    width: 130,
+                    child: Column(),
+                    decoration: const BoxDecoration(
+                      color: primary,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                  ),
+                ],
+              ),
+              decoration: const BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
             ),
           ],
