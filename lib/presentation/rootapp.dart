@@ -40,7 +40,6 @@ class _RootAppState extends State<RootApp> {
 // Custom appbar (might use sliverappbar for scrolling effects)
   PreferredSizeWidget getAppBar() {
     double _h = 220;
-    int leaderboardTabindex = 0;
     if (activeTab == 0) {
       _h = 315;
     } else if (activeTab == 3) {
@@ -75,10 +74,11 @@ class _RootAppState extends State<RootApp> {
                           color: black,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                  const SizedBox(
+                  SizedBox(
                     child: CircleAvatar(
                       radius: 25.0,
-                      backgroundColor: disabled,
+                      backgroundColor: white,
+                      foregroundImage: AssetImage(user[0]['image']),
                     ),
                   )
                 ],
