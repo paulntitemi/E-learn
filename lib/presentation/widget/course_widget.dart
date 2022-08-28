@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
-import 'package:elearn/data/course/course_json.dart';
 import 'package:elearn/presentation/themes/colors.dart';
+import 'package:elearn/utils/player_util.dart';
 
 class CourseView extends StatefulWidget {
-  // final String title;
-  // final String image;
+  final String title;
+  final String image;
   final String desc;
   final double widthvalue;
   final double heightvalue;
+  final String videoUrl;
+  final List titles;
   const CourseView({
     Key? key,
-    // required this.title,
-    // required this.image,
+    required this.title,
+    required this.image,
+    required this.desc,
     required this.widthvalue,
     required this.heightvalue,
-    required this.desc,
+    required this.videoUrl,
+    required this.titles,
   }) : super(key: key);
 
   @override
@@ -23,9 +28,22 @@ class CourseView extends StatefulWidget {
 }
 
 class _CourseViewState extends State<CourseView> {
+  late String changingVideoUrl = widget.videoUrl;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.bottomToTop,
+              child: CourseDetail(
+                videoUrl: widget.videoUrl,
+                titles: widget.titles,
+              ),
+            ));
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -37,10 +55,10 @@ class _CourseViewState extends State<CourseView> {
               // image
               Expanded(
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage("https://picsum.photos/250?image=9"),
+                      image: AssetImage(widget.image),
                     ),
                   ),
                 ),
