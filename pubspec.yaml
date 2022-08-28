@@ -38,6 +38,7 @@ dependencies:
   video_player: ^2.4.7 # for local video player
   flick_video_player: ^0.5.0 # for video player design and controls
   table_calendar: ^3.0.6 # for the calendar
+  page_transition: ^2.0.9 # for custom transitions
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,11 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
+    - assets/images/courses/
+    - assets/images/user/
+    - assets/courses/
+    - assets/courses/videos/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
