@@ -91,6 +91,11 @@ class _ExplorePageState extends State<ExplorePage> {
                         desc: courses[index]['short_description'],
                         widthvalue: 150,
                         heightvalue: 180,
+                        image: courses[index]['img'],
+                        title: courses[index]['title'],
+                        videoUrl: courses[index]['video_url'],
+                        titles: courses[index]['topics'],
+                        //TODO: Add the author of the course
                       );
                     }),
                   ),

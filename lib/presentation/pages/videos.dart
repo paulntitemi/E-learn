@@ -88,8 +88,13 @@ class _VideosPageState extends State<VideosPage> {
                       // five items only
                       return CourseView(
                         desc: courses[index]['short_description'],
+                        //TODO: Add the author of the course
                         widthvalue: 150,
                         heightvalue: 180,
+                        image: courses[index]['img'],
+                        title: courses[index]['title'],
+                        videoUrl: courses[index]['video_url'],
+                        titles: courses[index]['topics'],
                       );
                     }),
                   ),
