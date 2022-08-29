@@ -22,7 +22,7 @@ class _RootAppState extends State<RootApp> {
     return Scaffold(
       // extendBody: true, // for notch, but makes some elements invisible
       backgroundColor: background,
-      appBar: getAppBar(),
+      // appBar: getAppBar(),
       body: getBody(),
       bottomNavigationBar: getFooter(),
       floatingActionButton: FloatingActionButton(
