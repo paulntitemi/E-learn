@@ -17,11 +17,14 @@ class CourseDetail extends StatefulWidget {
 }
 
 class _CourseDetailState extends State<CourseDetail> {
+  // for the changing topics,
+  // using -1 as the initial value to avoid initialize error
+  late int selected = -1;
+
   // Flick player utils
   late FlickManager flickManager;
   // Url manager
-  late String changingVideoUrl = widget.videoUrl;
-  // late List courseTopics = widget.titles;
+  late String changingVideoUrl;
 
   @override
   void initState() {
@@ -31,6 +34,9 @@ class _CourseDetailState extends State<CourseDetail> {
     );
   }
 
+  // @override
+  // void didUpdateWidget() {}
+
   @override
   void dispose() {
     flickManager.dispose();
@@ -39,7 +45,6 @@ class _CourseDetailState extends State<CourseDetail> {
 
   @override
   Widget build(BuildContext context) {
-    int selected = 0;
     return SafeArea(
       child: Scaffold(
         backgroundColor: background,
@@ -54,81 +59,79 @@ class _CourseDetailState extends State<CourseDetail> {
             // topics within the course
             Padding(
               padding: const EdgeInsets.all(12),
-              child: Expanded(
-                child: Column(
-                  children: List.generate(
-                    widget.titles.length,
-                    (index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: 5,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(
-                              () {
-                                selected = index;
-                                flickManager = FlickManager(
-                                  videoPlayerController:
-                                      VideoPlayerController.asset(
-                                          widget.titles[index]['video_url']),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            height: 60,
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 8,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // username and rank numner
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      // number
-                                      // a little space
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      // username
-                                      Text(
-                                        widget.titles[index]['title'],
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          color: black,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+              child: Column(
+                children: List.generate(
+                  widget.titles.length,
+                  (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 5,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(
+                            () {
+                              selected = index;
+                              flickManager = FlickManager(
+                                videoPlayerController:
+                                    VideoPlayerController.asset(
+                                        widget.titles[index]['video_url']),
+                              );
+                              // use a late variable and change it's value on tap
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: 60,
+                          width: MediaQuery.of(context).size.width,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 8,
                             ),
-                            decoration: BoxDecoration(
-                              color: selected == index ? primary : white,
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10),
-                              ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: shadow,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 2),
-                                  spreadRadius: 3, // Shadow position
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                // username and rank numner
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    // number
+                                    // a little space
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    // username
+                                    Text(
+                                      widget.titles[index]['title'],
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        color: black,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
                           ),
+                          decoration: BoxDecoration(
+                            color: selected == index ? primary : white,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: shadow,
+                                blurRadius: 10,
+                                offset: Offset(0, 2),
+                                spreadRadius: 3, // Shadow position
+                              ),
+                            ],
+                          ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             )
