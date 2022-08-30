@@ -122,6 +122,7 @@ class _LeaderBoardPageState extends State<LeaderBoardPage> {
     );
   }
 
+  // body widget
   Widget getBody() {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
