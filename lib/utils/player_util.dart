@@ -29,13 +29,11 @@ class _CourseDetailState extends State<CourseDetail> {
   @override
   void initState() {
     super.initState();
+    changingVideoUrl = widget.videoUrl;
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.asset(widget.videoUrl),
+      videoPlayerController: VideoPlayerController.asset(changingVideoUrl),
     );
   }
-
-  // @override
-  // void didUpdateWidget() {}
 
   @override
   void dispose() {
@@ -72,10 +70,13 @@ class _CourseDetailState extends State<CourseDetail> {
                           setState(
                             () {
                               selected = index;
+                              changingVideoUrl =
+                                  widget.titles[index]['video_url'];
                               flickManager = FlickManager(
+                                autoInitialize: true,
                                 videoPlayerController:
                                     VideoPlayerController.asset(
-                                        widget.titles[index]['video_url']),
+                                        changingVideoUrl),
                               );
                               // use a late variable and change it's value on tap
                             },
