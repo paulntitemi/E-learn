@@ -1,6 +1,6 @@
 const List user = [
   {
-    "image": "#",
+    "image": "assets/images/user/default-user.png",
     "firstname": "Akshay",
     "lastname": "Maury",
     "occupation": "student",

@@ -1,6 +1,9 @@
 import 'package:elearn/data/course/categories.dart';
+import 'package:elearn/data/course/course_json.dart';
+import 'package:elearn/data/user/user_data.dart';
 import 'package:elearn/presentation/themes/colors.dart';
 import 'package:elearn/presentation/widget/course_widget.dart';
+import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter/material.dart';
 
 class PlannerPage extends StatefulWidget {
@@ -15,7 +18,103 @@ class _PlannerPageState extends State<PlannerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: background,
+      appBar: getAppBar(),
       body: getBody(),
+    );
+  }
+
+  // Custom appbar (
+  PreferredSizeWidget getAppBar() {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(150),
+      child: Container(
+        // duration: const Duration(milliseconds: 500),
+        // curve: Curves.fastOutSlowIn,
+        // Appbar container
+        height: 220,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 12,
+            right: 12,
+          ),
+          child: Column(
+            // Colums conataining the username, profilepic, and the searchbar
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                // user name and searchbar
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Hi, ' + user[0]['firstname'],
+                      style: const TextStyle(
+                          color: black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    child: CircleAvatar(
+                      radius: 25.0,
+                      backgroundColor: white,
+                      foregroundImage: AssetImage(user[0]['image']),
+                    ),
+                  )
+                ],
+              ),
+              // search bar
+              Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(12),
+                    isDense: true,
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: shadow),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    filled: true,
+                    fillColor: white,
+                    hintStyle: const TextStyle(color: disabled),
+                    hintText: "Search",
+                    suffixIcon: const Icon(
+                      Icons.search,
+                      color: disabled,
+                      size: 25,
+                    ),
+                  ),
+                ),
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: shadow,
+                      blurRadius: 8,
+                      offset: Offset(0, 1),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        // appbar container Decoration
+        decoration: const BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: shadow,
+              blurRadius: 10,
+              offset: Offset(0, 8),
+              spreadRadius: 1, // Shadow position
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -75,10 +174,15 @@ class _PlannerPageState extends State<PlannerPage> {
               desc: plannerCategory[0]["title"],
               widthvalue: MediaQuery.of(context).size.width,
               heightvalue: 220,
+              image: courses[0]['img'],
+              title: courses[0]['title'],
+              videoUrl: courses[0]['video_url'],
+              titles: courses[0]['topics'],
+              //TODO: Add the author of the course
             ),
             // category 2 name
             Padding(
-              padding: const EdgeInsets.only(left: 25, bottom: 5, top: 2),
+              padding: const EdgeInsets.only(left: 25, bottom: 10, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -114,6 +218,40 @@ class _PlannerPageState extends State<PlannerPage> {
                     color: primary,
                   ),
                 ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  // calendar
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TableCalendar(
+                        firstDay: DateTime.utc(2010, 10, 16),
+                        lastDay: DateTime.utc(2030, 3, 14),
+                        focusedDay: DateTime.now(),
+                        // calendar options
+                        headerVisible: false,
+                        shouldFillViewport: false,
+                      ),
+                    ),
+                  ),
+                  // event container
+                  //TODO: create events data and display it in the calander
+                  Container(
+                    width: 130,
+                    child: Column(),
+                    decoration: const BoxDecoration(
+                      color: primary,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                  ),
+                ],
+              ),
+              decoration: const BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
             ),
           ],
