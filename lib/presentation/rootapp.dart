@@ -160,6 +160,10 @@ class _RootAppState extends State<RootApp> {
           VideosPage(),
           //3
           LeaderBoardPage(),
+          //4
+          Center(
+            child: Text("Chat"),
+          ),
         ],
       ),
     );
@@ -173,6 +177,7 @@ class _RootAppState extends State<RootApp> {
       Icons.calendar_today,
       Icons.slideshow_rounded,
       Icons.auto_graph_outlined,
+      Icons.messenger_outline,
     ];
     //used container for custom navbar
     return BottomAppBar(
@@ -180,25 +185,31 @@ class _RootAppState extends State<RootApp> {
       color: white,
       shape: const CircularNotchedRectangle(), //shape of notch
       notchMargin: 5, //notche margin between floating button and bottom appbar
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(items.length, (index) {
-          //padding helps even out the items in the nav bar
-          return Padding(
-            padding: const EdgeInsets.all(10),
-            child: IconButton(
-                icon: Icon(
-                  items[index],
-                  color: activeTab == index ? primary : disabled,
-                ),
-                onPressed: () {
-                  setState(() {
-                    activeTab = index;
-                  });
-                }),
-          );
-        }),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 3,
+          right: 3,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(items.length, (index) {
+            //padding helps even out the items in the nav bar
+            return Padding(
+              padding: const EdgeInsets.all(10),
+              child: IconButton(
+                  icon: Icon(
+                    items[index],
+                    color: activeTab == index ? primary : disabled,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      activeTab = index;
+                    });
+                  }),
+            );
+          }),
+        ),
       ),
     );
   }
