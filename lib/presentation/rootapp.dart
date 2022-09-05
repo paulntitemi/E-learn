@@ -160,10 +160,10 @@ class _RootAppState extends State<RootApp> {
           VideosPage(),
           //3
           LeaderBoardPage(),
-          //4
-          Center(
-            child: Text("Chat"),
-          ),
+          // //4
+          // Center(
+          //   child: Text("Chat"),
+          // ),
         ],
       ),
     );
@@ -177,7 +177,7 @@ class _RootAppState extends State<RootApp> {
       Icons.calendar_today,
       Icons.slideshow_rounded,
       Icons.auto_graph_outlined,
-      Icons.messenger_outline,
+      // Icons.messenger_outline,
     ];
     //used container for custom navbar
     return BottomAppBar(
