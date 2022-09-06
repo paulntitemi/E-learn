@@ -1,6 +1,7 @@
 import 'package:elearn/data/course/course_json.dart';
 import 'package:elearn/data/course/categories.dart';
 import 'package:elearn/data/user/user_data.dart';
+import 'package:elearn/presentation/pages/profile.dart';
 import 'package:elearn/presentation/themes/colors.dart';
 import 'package:elearn/presentation/widget/course_widget.dart';
 import 'package:elearn/presentation/widget/subjects_widget.dart';
@@ -47,11 +48,19 @@ class _ExplorePageState extends State<ExplorePage> {
           ),
           // profile pic
           actions: [
-            SizedBox(
-              child: CircleAvatar(
-                radius: 25.0,
-                backgroundColor: white,
-                foregroundImage: AssetImage(user[0]['image']),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const UserProfile()));
+              },
+              child: SizedBox(
+                child: CircleAvatar(
+                  radius: 25.0,
+                  backgroundColor: white,
+                  foregroundImage: AssetImage(user[0]['image']),
+                ),
               ),
             )
           ],
