@@ -46,6 +46,7 @@ class _CourseDetailState extends State<CourseDetail> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: background,
+        appBar: AppBar(),
         body: Column(
           children: [
             // player
